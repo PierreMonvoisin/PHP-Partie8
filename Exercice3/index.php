@@ -1,3 +1,8 @@
+<?php
+if (isset($_POST['button'])){
+  setcookie('login', $login);
+  setcookie('password', $password);
+} ?>
 <!DOCTYPE html>
 <html lang='fr' dir='ltr'>
 <head>
@@ -19,15 +24,15 @@
         </div>
         <div class="form-group">
           <label for="password">Entrez votre mot de passe :</label>
-          <input type="text" class="form-control" id="password" placeholder="123456789..." name="password">
+          <input type="text" class="form-control" id="password" placeholder="password..." name="password">
         </div>
         <button type="submit" class="btn btn-dark" name="button" value="checked">Valider</button>
       </form>
       <?php
-      if (isset($_POST['button'])){
-        setcookie('login', $_POST['login']);
-        setcookie('password', $_POST['password']); ?>
-        <p class="mt-2">Cookie enregistré !</p>
+      $login = $_POST['login'];
+      $password = $_POST['password'];
+      if (!isset($_COOKIE['login'])) { ?>
+        <p><?= $_COOKIE['login'].$_COOKIE['password'] ?></p>
       <?php } ?>
       <p class='text-right mt-2 font-weight-bold'>Un message de la direction</p>
     </div>
